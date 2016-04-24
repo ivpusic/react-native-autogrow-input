@@ -14,7 +14,7 @@ export default class Input extends Component {
 
   componentWillMount() {
     let {defaultHeight} = this.props;
-    console.log(defaultHeight);
+    
     if (defaultHeight) {
       this.setState({
         height: defaultHeight
