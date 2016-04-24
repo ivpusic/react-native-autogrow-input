@@ -1,0 +1,19 @@
+{
+  "name": "react-native-autogrow-input",
+  "version": "0.0.1",
+  "description": "Missing auto grow multiline input component",
+  "main": "src/input.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "native",
+    "input",
+    "grow",
+    "auto"
+  ],
+  "author": "Ivan Pusic",
+  "license": "MIT"
+}
