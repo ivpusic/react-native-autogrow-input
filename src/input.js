@@ -1,5 +1,5 @@
-import React, {
-  Component,
+import React, {Component} from 'react';
+import {
   View,
   TextInput
 } from 'react-native';
@@ -14,7 +14,7 @@ export default class Input extends Component {
 
   componentWillMount() {
     let {defaultHeight} = this.props;
-    
+
     if (defaultHeight) {
       this.setState({
         height: defaultHeight
