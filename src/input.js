@@ -34,14 +34,20 @@ export default class Input extends Component {
     }
   }
 
-  render() {
-    const { style, ...props } = this.props;
+  resetInputText() {
+    this.refs.input.setNativeProps({ text: '' });
+    this.setState({
+      height: this.props.defaultHeight,
+    });
+  }
 
+  render() {
     return (
       <TextInput
-        style={[{ height:this.state.height }, style]}
+        ref="input"
         multiline
-        {...props}
+        {...this.props}
+        style={[{ height: this.state.height }, this.props.style]}
         onChange={this.handleChange}
       />);
   }
