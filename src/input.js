@@ -54,7 +54,11 @@ export default class Input extends Component {
 }
 
 Input.propTypes = {
-  style: React.PropTypes.number,
+  style: React.PropTypes.oneOfType([
+    React.PropTypes.number,
+    React.PropTypes.array,
+    React.PropTypes.object
+  ]),
   onChange: React.PropTypes.func,
   defaultHeight: React.PropTypes.number,
 };
