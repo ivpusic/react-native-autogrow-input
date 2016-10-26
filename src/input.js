@@ -47,7 +47,7 @@ export default class Input extends Component {
         ref="input"
         multiline
         {...this.props}
-        style={[{ height: this.state.height }, this.props.style]}
+        style={[this.props.style, {height: this.state.height}]}
         onChange={this.handleChange}
       />);
   }
