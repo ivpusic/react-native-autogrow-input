@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import {
-  TextInput,
-} from 'react-native';
+const React = require('react-native');
+const {
+	Component,
+	TextInput
+} = React;
 
 export default class Input extends Component {
   constructor() {
