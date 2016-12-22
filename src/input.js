@@ -4,12 +4,15 @@ import {
 } from 'react-native';
 
 export default class Input extends Component {
+  static defaultProps = {
+    defaultHeight: 0,
+  }
+
   constructor() {
     super();
     this.state = {
-      height: 35,
+      height: null,
     };
-    this.handleChange = this.handleChange.bind(this);
   }
 
   componentWillMount() {
@@ -22,15 +25,26 @@ export default class Input extends Component {
     }
   }
 
+  setHeight(newHeight){
+    // Add some extra margin to prevent flickering
+    this.setState({
+      height: Math.max(this.props.defaultHeight, newHeight) + 25,
+    });
+  }
+
   handleChange(event) {
     if (this.state.height !== event.nativeEvent.contentSize.height) {
-      this.setState({
-        height: Math.max(this.props.defaultHeight, event.nativeEvent.contentSize.height),
-      });
+      this.setHeight(event.nativeEvent.contentSize.height)
     }
 
     if (this.props.onChange) {
       this.props.onChange(event);
+    }
+  }
+
+  handleInitialHeight(event){
+    if(this.state.height === null){
+      this.setHeight(event.nativeEvent.contentSize.height)
     }
   }
 
@@ -48,8 +62,10 @@ export default class Input extends Component {
         multiline
         {...this.props}
         style={[this.props.style, {height: this.state.height}]}
-        onChange={this.handleChange}
-      />);
+        onChange={this.handleChange.bind(this)}
+        onContentSizeChange={this.handleInitialHeight.bind(this)}
+      />
+    );
   }
 }
 
