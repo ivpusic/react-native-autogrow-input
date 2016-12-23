@@ -6,6 +6,7 @@ import {
 export default class Input extends Component {
   static defaultProps = {
     defaultHeight: 0,
+    maxHeight: null,
   }
 
   constructor() {
@@ -27,8 +28,9 @@ export default class Input extends Component {
 
   setHeight(newHeight){
     // Add some extra margin to prevent flickering
+    const { defaultHeight, maxHeight = newHeight} = this.props
     this.setState({
-      height: Math.max(this.props.defaultHeight, newHeight) + 25,
+      height: Math.max(defaultHeight, newHeight > maxHeight ? maxHeight : newHeight) + 10,
     });
   }
 
