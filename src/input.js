@@ -19,15 +19,11 @@ export default class AutogrowInput extends PureComponent {
     }
   }
 
-  handleChange = (event) => {
+  onContentSizeChange = (event) => {
     if (this.state.height !== event.nativeEvent.contentSize.height) {
       this.setState({
         height: Math.max(this.props.defaultHeight, event.nativeEvent.contentSize.height),
       });
-    }
-
-    if (this.props.onChange) {
-      this.props.onChange(event);
     }
   }
 
@@ -47,7 +43,7 @@ export default class AutogrowInput extends PureComponent {
         multiline
         {...this.props}
         style={[this.props.style, { height: this.state.height }]}
-        onChange={this.handleChange}
+        onContentSizeChange={this.onContentSizeChange}
       />);
   }
 }
