@@ -3,6 +3,8 @@ import {
   TextInput
 } from 'react-native';
 
+import PropTypes from 'prop-types';
+
 export default class AutogrowInput extends PureComponent {
 
   state = {
@@ -19,15 +21,11 @@ export default class AutogrowInput extends PureComponent {
     }
   }
 
-  handleChange = (event) => {
+  onContentSizeChange = (event) => {
     if (this.state.height !== event.nativeEvent.contentSize.height) {
       this.setState({
         height: Math.max(this.props.defaultHeight, event.nativeEvent.contentSize.height),
       });
-    }
-
-    if (this.props.onChange) {
-      this.props.onChange(event);
     }
   }
 
@@ -47,17 +45,17 @@ export default class AutogrowInput extends PureComponent {
         multiline
         {...this.props}
         style={[this.props.style, { height: this.state.height }]}
-        onChange={this.handleChange}
+        onContentSizeChange={this.onContentSizeChange}
       />);
   }
 }
 
 AutogrowInput.propTypes = {
-  style: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.array,
-    React.PropTypes.object
+  style: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.array,
+    PropTypes.object
   ]),
-  onChange: React.PropTypes.func,
-  defaultHeight: React.PropTypes.number,
+  onChange: PropTypes.func,
+  defaultHeight: PropTypes.number,
 };
