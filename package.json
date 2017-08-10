@@ -1,6 +1,6 @@
 {
   "name": "react-native-autogrow-input",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Missing auto grow multiline input component",
   "main": "src/input.js",
   "scripts": {

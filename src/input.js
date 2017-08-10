@@ -38,6 +38,12 @@ export default class AutogrowInput extends PureComponent {
     }
   }
 
+  focus = () => {
+    if (this.inputRef && this.inputRef.focus) {
+      this.inputRef.focus();
+    }
+  }
+
   render() {
     return (
       <TextInput
